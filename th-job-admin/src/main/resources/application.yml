@@ -1,0 +1,7 @@
+server:
+  port: 8008
+spring:
+  application:
+    name: @artifactId@
+  redis:
+    host: 172.18.164.39
