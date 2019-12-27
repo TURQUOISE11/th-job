@@ -1,19 +1,31 @@
-package cn.lhemi.demo.netty;
+package cn.lhemi.thjob.spring.boot;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.json.JSONUtil;
+import cn.lhemi.thjob.core.dto.Message;
+import com.alibaba.fastjson.JSON;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.json.JsonObjectDecoder;
+import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
+/**
+ * @author tutu11
+ */
 public class NettyClient {
+    private static boolean isRunning = false;
     private final String host;
     private final int port;
     private final ChannelHandlerAdapter clientHandler;
     private static Channel channel;
+
+    public static boolean isRunning() {
+        return isRunning;
+    }
 
     public static Channel channel() {
         return channel;
@@ -26,8 +38,8 @@ public class NettyClient {
         this.clientHandler = clientHandler;
     }
 
-    public static NettyClient init(String host, int port, ChannelHandlerAdapter clientHandler) {
-        return new NettyClient(host, port, clientHandler);
+    public static NettyClient init(String host, int port, ChannelHandlerAdapter handler) {
+        return new NettyClient(host, port, handler);
     }
 
     public void startSys() {
@@ -37,7 +49,7 @@ public class NettyClient {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }).run();
+        }).start();
     }
 
     public void start() throws Exception {
@@ -52,7 +64,7 @@ public class NettyClient {
 //                        System.out.println("正在连接中...");
                         ChannelPipeline pipeline = ch.pipeline();
                         pipeline.addLast(new StringEncoder());
-                        pipeline.addLast(new JsonObjectDecoder());
+                        pipeline.addLast(new StringDecoder());
                         pipeline.addLast(clientHandler);
                     }
                 });
@@ -62,12 +74,12 @@ public class NettyClient {
             future.addListener((ChannelFutureListener) channelFuture -> {
                 if (future.isSuccess()) {
                     System.out.println("连接服务器成功");
+                    isRunning = true;
                     if (null != channel) {
                         System.err.println("删除虚悬连接");
                         channel.close();
                     }
                     channel = future.channel();
-                    channel.writeAndFlush(DateUtil.now());
                 } else {
                     System.out.println("连接服务器失败");
                     future.cause().printStackTrace();
@@ -77,8 +89,8 @@ public class NettyClient {
                 }
             });
         } catch (Exception e) {
-            tryAgain();
             e.printStackTrace();
+            tryAgain();
         }
     }
 

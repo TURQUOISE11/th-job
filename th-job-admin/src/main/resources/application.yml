@@ -5,3 +5,6 @@ spring:
     name: @artifactId@
   redis:
     host: 172.18.164.39
+jax:
+  netty:
+    port: 4567
