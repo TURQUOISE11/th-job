@@ -5,6 +5,12 @@ spring:
     name: @artifactId@
   redis:
     host: 172.18.164.39
-jax:
-  netty:
-    port: 4567
+  main:
+    allow-bean-definition-overriding: true
+tio:
+  core:
+    server:
+      port: 5678
+      heartbeat-timeout: 60000
+    cluster:
+      enabled: false

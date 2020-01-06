@@ -1,17 +1,14 @@
 package cn.lhemi.thjob.admin;
 
-import cn.lhemi.jax.JaxServer;
-import cn.lhemi.jax.annotation.EnableJaxServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.tio.core.starter.annotation.EnableTioServerServer;
 
-@EnableJaxServer
 @SpringBootApplication
+@EnableTioServerServer
 public class ThJobAdminApplication {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SpringApplication.run(ThJobAdminApplication.class, args);
-        JaxServer.start();
     }
-
 }

@@ -1,13 +1,11 @@
 package cn.lhemi.thjob.admin.controller;
 
-import cn.lhemi.thjob.admin.dto.R;
+import cn.lhemi.thjob.core.dto.R;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author tutu11
@@ -21,10 +19,10 @@ public class JobApiController {
 
     @RequestMapping("/registry")
     @ResponseBody
-    public R<String> registry(@RequestHeader(name = XXL_RPC_ACCESS_TOKEN, required = false) String accessToken, @RequestBody(required = false) String data) {
+    public R registry(@RequestHeader(name = XXL_RPC_ACCESS_TOKEN, required = false) String accessToken, @RequestBody(required = false) String data) {
         System.out.println("accessToken:" + accessToken);
         System.out.println("data:" + data);
-        return R.SUCCESS;
+        return new R<>();
     }
 
     /**
@@ -35,11 +33,11 @@ public class JobApiController {
      */
     @RequestMapping("/registryRemove")
     @ResponseBody
-    public R<String> registryRemove(@RequestHeader(name = XXL_RPC_ACCESS_TOKEN, required = false) String accessToken, @RequestBody(required = false) String data) {
+    public R registryRemove(@RequestHeader(name = XXL_RPC_ACCESS_TOKEN, required = false) String accessToken, @RequestBody(required = false) String data) {
         System.out.println("accessToken:" + accessToken);
         System.out.println("data:" + data);
         // invoke
-        return R.SUCCESS;
+        return new R<>();
     }
 
 }

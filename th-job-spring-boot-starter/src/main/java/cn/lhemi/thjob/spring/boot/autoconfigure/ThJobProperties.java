@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date 2019-12-27 08:56:11
  */
 @Data
-@ConfigurationProperties("jax.netty")
+@ConfigurationProperties("th-job.server")
 public class ThJobProperties {
     /**
      * 地址
@@ -19,9 +19,21 @@ public class ThJobProperties {
      */
     private int port = 4567;
     /**
+     * 心跳超时时间
+     */
+    private int timeOut = 10000;
+    /**
+     * 客户端ID
+     */
+    private String clientId;
+    /**
      * 应用名称
      */
     private String appName = "default";
+    /**
+     * 分组
+     */
+    private String group = "default";
     /**
      * app key
      */

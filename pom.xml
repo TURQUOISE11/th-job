@@ -22,7 +22,10 @@
     </modules>
     <properties>
         <java.version>1.8</java.version>
-        <netty.version>4.1.37.Final</netty.version>
+        <hutool.version>5.0.7</hutool.version>
+        <fastjson.version>1.2.58</fastjson.version>
+        <tio.version>3.5.7.v20191115-RELEASE</tio.version>
+<!--        <tio.version>3.3.5.v20190712-RELEASE</tio.version>-->
     </properties>
     <dependencies>
         <dependency>
@@ -31,13 +34,22 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-all</artifactId>
-                <version>${netty.version}</version>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.t-io</groupId>
+                <artifactId>tio-core-spring-boot-starter</artifactId>
+                <version>${tio.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.restdocs</groupId>

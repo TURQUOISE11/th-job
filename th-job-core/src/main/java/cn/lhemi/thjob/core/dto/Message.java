@@ -1,9 +1,8 @@
 package cn.lhemi.thjob.core.dto;
 
 import com.sun.istack.internal.Nullable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 /**
  * @author tutu11
@@ -11,6 +10,10 @@ import lombok.Getter;
  * @date 2019-12-27 09:54:53
  */
 @Data
+@Builder
+@Accessors(chain = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Message<T> {
 
     /**
@@ -32,6 +35,15 @@ public class Message<T> {
      * 数据
      */
     private T data;
+
+//    public Message() {
+//    }
+//
+//    public Message(MsgType type) {
+//        this.type = type;
+//        this.ts = System.currentTimeMillis();
+//        this.outId = IdUtil.simpleUUID();
+//    }
 
 
     @Getter
@@ -57,6 +69,10 @@ public class Message<T> {
          * 添加
          */
         ADD(4, "添加"),
+        /**
+         * 心跳
+         */
+        HEART_BEAT(5, "心跳"),
         ;
         private int code;
         private String msg;

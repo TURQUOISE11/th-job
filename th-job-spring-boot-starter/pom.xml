@@ -13,7 +13,6 @@
     <description>springboot版本th-job</description>
 
 
-
     <dependencies>
         <dependency>
             <groupId>cn.lhemi</groupId>
@@ -21,18 +20,8 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.0.7</version>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.58</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

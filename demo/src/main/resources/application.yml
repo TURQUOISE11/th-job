@@ -1,2 +1,7 @@
 server:
   port: 8005
+
+th-job:
+  server:
+    port: 5678
+    time-out: 10000

@@ -14,10 +14,15 @@
     <name>th-job-core</name>
     <url>http://www.lhemi.cn</url>
 
-
-
     <dependencies>
-
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.t-io</groupId>
+            <artifactId>tio-core-spring-boot-starter</artifactId>
+        </dependency>
     </dependencies>
     <build>
 
